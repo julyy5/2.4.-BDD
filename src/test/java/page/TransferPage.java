@@ -1,17 +1,12 @@
 package page;
 
-import data.dataHelper;
+import data.DataHelper;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
 
-public class transferPage {
+public class TransferPage {
 
-   // public DashboardPage validDataToTransfer(String amountTransfer, dataHelper.CardInfo cardInfo){
-     //   transfer(amountTransfer, cardInfo);
-      //  return new DashboardPage();
-   // }
-    public DashboardPage validDataToTransfer(String amountTransfer, dataHelper.CardInfo cardInfo){
+    public DashboardPage validDataToTransfer(String amountTransfer, DataHelper.CardInfo cardInfo) {
         $("[data-test-id=\"amount\"] input").setValue(amountTransfer);
         $("[data-test-id=\"from\"] input").setValue(cardInfo.getCardNumber());
         $("[data-test-id=\"action-transfer\"]").click();

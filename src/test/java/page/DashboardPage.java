@@ -2,7 +2,7 @@ package page;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import data.dataHelper;
+import data.DataHelper;
 import lombok.val;
 
 import static com.codeborne.selenide.Condition.*;
@@ -16,11 +16,11 @@ public class DashboardPage {
 
     private SelenideElement heading = $("[data-test-id=dashboard]");
 
-    public DashboardPage(){
+    public DashboardPage() {
         heading.shouldBe(visible);
     }
 
-    public static int CardBalance(dataHelper.CardInfo cardInfo) {
+    public static int CardBalance(DataHelper.CardInfo cardInfo) {
         var text = cards.findBy(text(cardInfo.getCardNumber().substring(15))).getText();
         return extractBalance(text);
     }
@@ -32,8 +32,8 @@ public class DashboardPage {
         return Integer.parseInt(value);
     }
 
-    public static transferPage selectCard(dataHelper.CardInfo cardInfo) {
+    public static TransferPage selectCard(DataHelper.CardInfo cardInfo) {
         cards.findBy(attribute("data-test-id", cardInfo.getId())).$("button").click();
-        return new transferPage();
+        return new TransferPage();
     }
 }
